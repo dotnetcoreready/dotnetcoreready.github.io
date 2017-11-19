@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {% include head.html %}
+
+  <body>
+
+    <nav class="navbar color-accent theme-dark" style="min-height: 12px">
+        <div class="navbar-local color-accent theme-dark">
+            <div class="container">
+                <div class="collapse navbar-collapse">
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-24">
+			<h2 class="hidden-xs">.NET Core Ready Blog</h2>
+			<ul class="nav nav-pills" style="margin: 0px 0;">
+				<li role="presentation">
+					<a class="no-outline" href="http://dotnetcoreready.com">Home</a>
+				</li>
+				<li role="presentation">
+					<a class="no-outline" href="http://blog.dotnetcoreready.com">Blog</a>
+				</li>
+			</ul>
+                </div>
+            </div>
+        </div>
+    </div>	
+
+    <main class="page-content" aria-label="Content">
+      <div class="container body-content">
+        {{ content }}
+
+	<hr/>
+            <footer>
+                <div class="row">
+                    <div class="col-xs-24">
+                        <div class="text-center">
+                            <br/>
+                            <div class="addthis_inline_share_toolbox"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-24">
+                        <p class="text-center">
+                            Created by <a href="https://twitter.com/jazzyskeltor">@jazzyskeltor</a> on <a href="https://github.com/mistakenot/dot-net-core-ready">Github</a>.
+                        </p>
+                    </div>
+                </div>
+            </footer>
+      </div>
+    </main>
+  </body>
+</html>
