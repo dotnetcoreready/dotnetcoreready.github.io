@@ -67,12 +67,31 @@ Finally can optionally specify the return type. The shortcuts for non generic ty
 
 You can also create generic types. A generic type is indicated with a capitol letter, optionally followed by a letter indicating which non-generic type to use:
 
-| Shortcut | Type          |
-| ---------|--------------:|
-| L        | List<T>       |
-| T        | Task<T>       |
-| E        | Enumerable<T> |
+| Shortcut | Type           |
+| ---------|---------------:|
+| L        | List<T>        |
+| T        | Task<T>        |
+| E        | IEnumerable<T> |
 
+So to generate an async extension method that returns an enumerable of strings you would use:
+````XaEs
+Which would give you the following template:
+{% highlight c# %}
+public static async Task<IEnumerable<string>> MyMethod(this PTYPE val)
+{
+    |
+}
+{% endhighlight %}
+By tabbing through you will be able to fill out the method name, parameter type and body in turn.
+
+Another example to generate a public-get private-set property of type list of guids:`
+````pvLs
+Would generate the following template:
+{% highlight c# %}
+public List<string> MyProperty { get; private set; }
+{% endhighlight %}
+
+This project is still fairly experimental, but you can find it here:
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
