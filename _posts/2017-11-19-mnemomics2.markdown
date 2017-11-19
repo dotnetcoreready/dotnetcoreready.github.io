@@ -1,0 +1,19 @@
+---
+layout: post
+title:  "Resharper Mnemics 2!"
+date:   2017-11-19 15:29:16 +0000
+---
+
+Mnemonics is a Resharper project that creates loads of additional code templates that you can access from intellisense. If you type 'c' in your C# file, an option will come up in intellisense. Pressing 'tab' will expand the template out into a new class template.
+
+
+{% highlight c# %}
+class Poco
+{
+
+}
+{% endhighlight %}
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
