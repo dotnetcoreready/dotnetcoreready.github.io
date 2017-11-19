@@ -6,13 +6,72 @@ date:   2017-11-19 15:29:16 +0000
 
 Mnemonics is a Resharper project that creates loads of additional code templates that you can access from intellisense. If you type 'c' in your C# file, an option will come up in intellisense. Pressing 'tab' will expand the template out into a new class template.
 
+![Generating a class]({{ "/assets/1-c-intellisense.png" | absolute_url }})
 
+On pressing tab, the following template will be generated:
+
+![Resulting template]({{ "/assets/2-c-expanded.PNG" | absolute_url }})
+
+Here's another example for generating a getter-only property for a string:
+
+![Generating a string getter]({{ "/assets/3-pgs-intellisense.png" | absolute_url }})
+
+'pg' will generate a getter only property and the 's' will make it a type of string:
+
+![Resulting template]({{ "/assets/4-pgs-expanded.PNG" | absolute_url }})
+
+The Mnemonics program generates over 600 of these shortcuts, allowing you to generate instance and static classes and members, including properties, methods and fields.
+
+But the original project hasn't been updated for a few years and doesn't include some of the newer, frequently used C# constructs, such as asynchronous methods and extension methods. It also includes some templates that don't work properly - for example, the template shortcut to generate a static method that returns a list of strings is:
 {% highlight c# %}
-class Poco
-{
-
-}
+Ml.b
 {% endhighlight %}
+The usage of a full stop stops the intellisense from completing properly.
+
+I've been putting together a project based on the original Mnemoics that resolves these issues and adds a range of new shortcuts.
+
+Structure types:
+
+| Shortcut | Construct         |
+| -------- |------------------:|
+| c        | Instance class    |
+| C        | Static class      |
+| m        | Instance method   |
+| M        | Static method     |
+| X        | Extension method  |
+| p        | Instance property |
+| P        | Static property   |
+
+For methods, you can optionally add an 'a' for an async method:
+
+| Shortcut | Construct |
+| ---------|----------:|
+| ma       | Async instance method  |
+| Ma       | Async static method    |
+| Xa       | Async extension method |
+
+Finally can optionally specify the return type. The shortcuts for non generic types are:
+
+| Shortcut | Type     |  
+| ---------|---------:|
+| c        | Char     |
+| f        | Float    |
+| b        | Boolean  |
+| by       | Byte     |
+| d        | Double   |
+| i        | Integer  |
+| l        | Long     |
+| s        | String   |
+| t        | Task     |
+| dt       | DateTime |
+
+You can also create generic types. A generic type is indicated with a capitol letter, optionally followed by a letter indicating which non-generic type to use:
+
+| Shortcut | Type          |
+| ---------|--------------:|
+| L        | List<T>       |
+| T        | Task<T>       |
+| E        | Enumerable<T> |
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
