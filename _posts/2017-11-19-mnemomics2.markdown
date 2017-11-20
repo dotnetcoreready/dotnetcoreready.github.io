@@ -32,46 +32,46 @@ I've been putting together a project based on the original Mnemoics that resolve
 
 Structure types:
 
-| Shortcut | Construct         |
-| -------- |------------------:|
-| c        | Instance class    |
-| C        | Static class      |
-| m        | Instance method   |
-| M        | Static method     |
-| X        | Extension method  |
-| p        | Instance property |
-| P        | Static property   |
+| Construct         | Shortcut | 
+| ----------------- |---------:|
+| Instance class    | c        | 
+| Static class      | C        |
+| Instance method   | m        |
+| Static method     | M        |
+| Extension method  | X        |
+| Instance property | p        |
+| Static property   | P        |
 
 For methods, you can optionally add an 'a' for an async method:
 
-| Shortcut | Construct |
-| ---------|----------:|
-| ma       | Async instance method  |
-| Ma       | Async static method    |
-| Xa       | Async extension method |
+| Construct              | Shortcut |
+| ---------------------- |---------:|
+| Async instance method  | ma       |
+| Async static method    | Ma       |
+| Async extension method | Xa       |
 
 Finally can optionally specify the return type. The shortcuts for non generic types are:
 
-| Shortcut | Type     |  
-| ---------|---------:|
-| c        | Char     |
-| f        | Float    |
-| b        | Boolean  |
-| by       | Byte     |
-| d        | Double   |
-| i        | Integer  |
-| l        | Long     |
-| s        | String   |
-| t        | Task     |
-| dt       | DateTime |
+| Shortcut | Type     |
+| -------- |---------:|
+| Char     | c        |
+| Float    | f        |
+| Boolean  | b        |
+| Byte     | by       | 
+| Double   | d        |
+| Integer  | i        |
+| Long     | l        |
+| String   | s        |
+| Task     | t        |
+| DateTime | dt       |
 
 You can also create generic types. A generic type is indicated with a capitol letter, optionally followed by a letter indicating which non-generic type to use:
 
-| Shortcut | Type           |
-| ---------|---------------:|
-| L        | List<T>        |
-| T        | Task<T>        |
-| E        | IEnumerable<T> |
+| Type           | Shortcut | 
+| -------------- |---------:|
+| List<T>        | L        |
+| Task<T>        | T        | 
+| IEnumerable<T> | E        | 
 
 So to generate an async extension method that returns an enumerable of strings you would use:
 ````XaEs
