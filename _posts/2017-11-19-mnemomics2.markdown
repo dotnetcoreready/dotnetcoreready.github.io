@@ -1,8 +1,9 @@
 ---
 layout: post
-title:  "Generating modern C# code with Intellisense Mnemonics"
+title:  "Generate modern C# code with Intellisense Mnemonics"
 author: Charlie Daly
 date:   2017-11-19 15:29:16 +0000
+description: Resharper Mnemonic Intellisense shortcuts enable you to be a more productive C# dev. Quickly generate classes, methods, fields and more.
 ---
 > "I choose a lazy person to do a hard job. Because a lazy person will find an easy way of doing it."
 >
@@ -36,11 +37,11 @@ The Mnemonics program generates over 600 of these shortcuts, allowing you to gen
 
 But the original project hasn't been updated for a few years and doesn't include some of the newer, frequently used C# constructs, such as asynchronous methods and extension methods. It also includes some templates that don't work properly - for example, the template shortcut to generate a static method that returns a list of strings is:
 ```
-Ml.b
+Ml.s
 ```
 But the usage of a full stop stops the intellisense from completing properly.
 
-After having a trawl through the source code I decided to take a stab at making a few improvements to the original code. The result is [Mnemonics2](http://github.com/mistakenot/mnemonics). As well as adding support for extension methoods and async methods, I also changed some of the original shortcuts to make intellisense complete correctly as well as modifing the choice of basic types. I also added a bit more flexibility to the shortcuts by allowing you to generate a stub of code without the return type filled in, allowing you to easily use custom return types. 
+After having a look through the source code I decided to take a stab at making a few improvements to the original code. The result is [Mnemonics2](http://github.com/mistakenot/mnemonics). As well as adding support for extension methods and async methods, I also changed some of the original shortcuts to make intellisense complete correctly as well as modifing the choice of basic types. I also added a bit more flexibility to the shortcuts by allowing you to generate a stub of code without the return type filled in, allowing you to easily use custom return types. 
 
 Below I've documented how the shortcuts look now, but the basic idea is the same - you begin by specifying what structure you want. If it is a member structure (methods, properties, fields), you can optionally add characters indicating what return type you want.
 
