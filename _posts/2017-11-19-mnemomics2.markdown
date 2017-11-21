@@ -1,6 +1,7 @@
 ---
 layout: post
-title:  "Resharper Mnemics Redux"
+title:  "Generating modern C# code with Intellisense Mnemonics"
+author: Charlie Daly
 date:   2017-11-19 15:29:16 +0000
 ---
 > "I choose a lazy person to do a hard job. Because a lazy person will find an easy way of doing it."
@@ -8,7 +9,8 @@ date:   2017-11-19 15:29:16 +0000
 >
 >   Someone.
 
-Ok, so writing simple classes, methods and properties might not be particularly hard, but you do write an awful lot of them on a day to day basis. It is against this backdrop of barely excusable laziness that I decided to spend some time learning about the Visual Studio Intellisense shortcuts that [JetBrains](http://jetbrains.com) made available in a project called [Mnemonics](http://github.com/jetbrains/mnemonics).
+Ok, so writing simple classes, methods and properties might not be particularly hard, but as a C# Dev, you do write an awful lot of them on a day to day basis. It is against this backdrop of barely excusable laziness that I decided to spend some time learning about the Visual Studio Intellisense shortcuts that [JetBrains](http://jetbrains.com) made available in a project called [Mnemonics](http://github.com/jetbrains/mnemonics).
+
 
 Mnemonics is a program that creates loads of additional code templates that you can import and access from intellisense. Instructions on how to import the templates are included in the repository, linked above. 
 
@@ -38,7 +40,7 @@ Ml.b
 ```
 But the usage of a full stop stops the intellisense from completing properly.
 
-After having a trawl through the source code I decided to take a stab at making a few improvements to the original code. The result is [Mnemonics2](http://github.com/mistakenot/mnemonics). As well as adding support for extension methoods and async methods, I also changed some of the original shortcuts to make intellisense complete correctly as well as adding a few more basic types. I also added a bit more flexibility to the shortcuts by allowing you to generate a stub of code without the return type filled in, allowing you to easily use custom return types. 
+After having a trawl through the source code I decided to take a stab at making a few improvements to the original code. The result is [Mnemonics2](http://github.com/mistakenot/mnemonics). As well as adding support for extension methoods and async methods, I also changed some of the original shortcuts to make intellisense complete correctly as well as modifing the choice of basic types. I also added a bit more flexibility to the shortcuts by allowing you to generate a stub of code without the return type filled in, allowing you to easily use custom return types. 
 
 Below I've documented how the shortcuts look now, but the basic idea is the same - you begin by specifying what structure you want. If it is a member structure (methods, properties, fields), you can optionally add characters indicating what return type you want.
 
@@ -55,16 +57,34 @@ The basic structure types that you can generate are unchanged from the original 
 | Struct            | s        |
 | Enum              | e        |
 
-For methods, you can now optionally add an 'a' for an async method:
+For methods, you can now optionally add an `a` for an async method that doesn't return a value, or `A` for one that does:
 
-| Construct              | Shortcut |
-| ---------------------- |---------:|
-| Instance method        | m        |
-| Static method          | M        |
-| Async instance method  | ma       |
-| Async static method    | Ma       |
-| Extension method       | X        |
-| Async extension method | Xa       |
+| Construct                      | Shortcut |
+| ------------------------------ |---------:|
+| Instance method                | m        |
+| Static method                  | M        |
+| Async method, no return value  | ma       |
+| Async method, return a value     | mA       |
+| Async static method, no return val| Ma       |
+| Async static method, return a val   | MA       |
+| Extension method               | X        |
+| Async extension method, no return val | Xa       |
+| Async extension method, return val  | XA       |
+
+So `ma` would generate:
+```
+public async Task MyMethod()
+{
+
+}
+```
+And `mAs` would generate:
+```
+public async Task<string> MyMethod()
+{
+
+}
+```
 
 ### Basic types
 Next, you can optionally specify the return type by appending the appropriate character sequence. The shortcuts for non generic types are:
@@ -81,6 +101,13 @@ Next, you can optionally specify the return type by appending the appropriate ch
 | Task     | t        |
 | DateTime | dt       |
 
+So to create a method that returns a string, use the shortcut `ms`. This would expand to:
+```
+public string MyMethod()
+{
+
+}
+```
 I've deliberately only included what I reckon are the most used ones. This means a few types that were included in the original project have been removed. Open an issue if you think something is missing that should be there.
 
 ### Generic types
@@ -93,10 +120,10 @@ Generic types can be used as return types by using one of the capital letter sho
 | Task<T>        | T        | 
 | IEnumerable<T> | E        | 
 
-So to generate an async extension method that returns an enumerable of strings you would use `XaEs` which would give you the following template:
+So to generate an async extension method that returns an enumerable of strings you would use `XAEs` which would give you the following template:
 
 ```
-public static async Task<IEnumerable<string>> MyMethod(this PTYPE val)
+public static async Task<IEnumerable<string>> MyMethod(this T val)
 {
     |
 }
@@ -112,16 +139,16 @@ public void MyMethod()
 
 }
 ```
-This logic also works for generic types. For example, the mnemoic `mE` would create a template for an instance method that returns an `IEnumerable` of something, and tabbing through will enable you to fill in the return type followed by the body:
+This logic also works for generic types. For example, the mnemonic `mE` would create a template for an instance method that returns an `IEnumerable` of something, and tabbing through will enable you to fill in the return type followed by the body:
 ````
-public IEnumerable<TRETURN> MyMethod()
+public IEnumerable<T> MyMethod()
 {
     |
 }
 ```
-Here is an example for generating a static async method with a custom return type using the mnemoic `Ma`:
+Here is an example for generating a static async method with a custom return type using the mnemoic `MA`:
 ```
-public static async Task<TRETURN> MyMethod()
+public static async Task<T> MyMethod()
 {
     |
 }
@@ -146,6 +173,6 @@ Add an `r` for a readonly field. To generate a readonly Task of result string, y
 private readonly Task<string> myValue;
 ```
 
-This project is still fairly experimental, but you can find it [here](https://github.com/mistakenot/mnemonics). If you want to discuss anything, open an issue or yell at me on [twitter](http://twitter.com/jazzyskeltor).
+This project is still fairly experimental, but you can find it [here](https://github.com/mistakenot/mnemonics). If you want to discuss anything, open an issue or yell at me on [Twitter](http://twitter.com/jazzyskeltor).
 
 Have fun - and may all your code be forever more procedurally generated. 
