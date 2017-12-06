@@ -15,9 +15,9 @@
 # in the templates via {{ site.myvariable }}.
 title: .NET Core Ready
 description: > # this means to ignore newlines until "baseurl:"
-  A blog focusing on Core CLR, C# and all things .NET.
+  A blog focusing on Core CLR, C# and .NET.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://blog.dotnetcoreready.com/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://blog.dotnetcoreready.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jazzyskeltor
 github_username:  mistakenot
 
