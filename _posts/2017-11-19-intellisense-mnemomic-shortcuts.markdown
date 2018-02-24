@@ -5,6 +5,9 @@ author: Charlie Daly
 date:   2017-11-19 15:29:16 +0000
 description: Resharper Mnemonic Intellisense shortcuts enable you to be a more productive C# dev. Quickly generate classes, methods, fields and more.
 ---
+
+{% assign canonical = "http://localhost:4000/2017/11/19/intellisense-mnemomic-shortcuts.html" %}
+
 > "I choose a lazy person to do a hard job. Because a lazy person will find an easy way of doing it."
 >
 >
